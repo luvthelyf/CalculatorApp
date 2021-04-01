@@ -1,230 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relative1"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/transparent_black"
     tools:context=".presentation.ui.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/equation"
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
         android:layout_margin="10dp"
-        android:background="@color/white"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="20dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/edt1"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/equation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#55ffffff"
+            android:gravity="fill_horizontal"
+            android:padding="8dp"
+            android:textSize="16sp"
+            android:maxLines="70" />
+    </ScrollView>
+
     <EditText
         android:id="@+id/edt1"
         android:layout_width="0dp"
-        android:layout_height="250dp"
-        android:background="#55ffffff"
-        app:layout_constraintTop_toBottomOf="@id/equation"
-        app:layout_constraintStart_toStartOf="@id/equation"
-        app:layout_constraintEnd_toEndOf="@id/equation"/>
+        android:layout_height="40dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/editor_border"
+        android:gravity="end|center"
+        android:padding="6dp"
+        app:layout_constraintBottom_toTopOf="@id/button1"
+        app:layout_constraintEnd_toEndOf="@id/scrollView"
+        app:layout_constraintStart_toStartOf="@id/scrollView" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button1"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
+        android:layout_marginTop="10dp"
+        android:onClick="digitClick"
         android:text="1"
-        app:layout_constraintTop_toBottomOf="@id/edt1"
-        app:layout_constraintStart_toStartOf="@id/edt1"
+        app:layout_constraintBottom_toTopOf="@id/button4"
         app:layout_constraintEnd_toStartOf="@id/button2"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toStartOf="@id/edt1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button2"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/button1"
-        android:layout_marginTop="94dp"
+        android:onClick="digitClick"
+        android:layout_marginStart="2dp"
         android:text="2"
-        app:layout_constraintStart_toEndOf="@id/button1"
-        app:layout_constraintTop_toBottomOf="@id/edt1"
         app:layout_constraintEnd_toStartOf="@id/button3"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button1"
+        app:layout_constraintTop_toTopOf="@id/button1"
+        android:layout_marginLeft="2dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button3"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="94dp"
+        android:onClick="digitClick"
         android:text="3"
-        app:layout_constraintStart_toEndOf="@id/button2"
-        app:layout_constraintTop_toBottomOf="@id/edt1"
+        android:layout_marginStart="2dp"
         app:layout_constraintEnd_toStartOf="@id/buttonadd"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button2"
+        app:layout_constraintTop_toTopOf="@id/button1"
+        android:layout_marginLeft="2dp" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonadd"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="94dp"
+        android:layout_marginStart="20dp"
+        android:onClick="symbolClick"
         android:text="+"
-        app:layout_constraintStart_toEndOf="@id/button3"
-        app:layout_constraintTop_toBottomOf="@id/edt1"
         app:layout_constraintEnd_toEndOf="@id/edt1"
-        android:onClick="symbolClick"/>
+        app:layout_constraintStart_toEndOf="@id/button3"
+        app:layout_constraintTop_toTopOf="@id/button1"
+        android:layout_marginLeft="20dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button4"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
+        android:layout_marginTop="2dp"
         android:text="4"
-        app:layout_constraintStart_toStartOf="@id/edt1"
-        app:layout_constraintTop_toBottomOf="@id/button1"
         app:layout_constraintEnd_toStartOf="@id/button5"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toStartOf="@id/edt1"
+        app:layout_constraintTop_toBottomOf="@id/button1" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button5"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
         android:text="5"
-        app:layout_constraintTop_toBottomOf="@id/button1"
-        app:layout_constraintStart_toEndOf="@id/button4"
         app:layout_constraintEnd_toStartOf="@id/button6"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button4"
+        app:layout_constraintTop_toTopOf="@id/button4"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button6"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
         android:text="6"
-        app:layout_constraintTop_toBottomOf="@id/button1"
-        app:layout_constraintStart_toEndOf="@id/button5"
         app:layout_constraintEnd_toStartOf="@id/buttonsub"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button5"
+        app:layout_constraintTop_toTopOf="@id/button5"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonsub"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
-        android:layout_marginLeft="20dp"
-
         android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:onClick="symbolClick"
         android:text="-"
-        app:layout_constraintStart_toEndOf="@id/button6"
-        app:layout_constraintTop_toBottomOf="@id/button1"
         app:layout_constraintEnd_toEndOf="@id/buttonadd"
-        android:onClick="symbolClick"/>
+        app:layout_constraintStart_toEndOf="@id/button6"
+        app:layout_constraintTop_toTopOf="@id/button6"
+        android:layout_marginStart="20dp" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button7"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button4"
-        android:layout_toLeftOf="@+id/button2"
+        android:onClick="digitClick"
         android:text="7"
-        app:layout_constraintStart_toStartOf="@id/button4"
-        app:layout_constraintTop_toBottomOf="@id/button4"
+        android:layout_marginTop="2dp"
         app:layout_constraintEnd_toStartOf="@id/button8"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toStartOf="@id/button4"
+        app:layout_constraintTop_toBottomOf="@id/button4"/>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button8"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:text="8"
-        app:layout_constraintStart_toEndOf="@id/button7"
-        app:layout_constraintTop_toBottomOf="@id/button4"
         app:layout_constraintEnd_toStartOf="@id/button9"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button7"
+        app:layout_constraintTop_toTopOf="@id/button7" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button9"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:text="9"
-        app:layout_constraintStart_toEndOf="@id/button8"
-        app:layout_constraintTop_toBottomOf="@id/button4"
         app:layout_constraintEnd_toStartOf="@id/buttonmul"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/button8"
+        app:layout_constraintTop_toTopOf="@id/button8" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonmul"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:onClick="symbolClick"
         android:text="*"
         app:layout_constraintEnd_toEndOf="@id/buttonsub"
-        app:layout_constraintTop_toBottomOf="@id/button4"
         app:layout_constraintStart_toEndOf="@id/button9"
-        android:onClick="symbolClick"/>
+        app:layout_constraintTop_toTopOf="@id/button9"
+        android:layout_marginStart="20dp" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonC"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="clearClick"
+        android:layout_marginTop="2dp"
         android:text="C"
-        app:layout_constraintStart_toStartOf="@id/button7"
-        app:layout_constraintTop_toBottomOf="@id/button7"
         app:layout_constraintEnd_toStartOf="@id/button0"
-        android:onClick="clearClick"/>
+        app:layout_constraintStart_toStartOf="@id/button7"
+        app:layout_constraintTop_toBottomOf="@id/button7" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button0"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="digitClick"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         android:text="0"
-        app:layout_constraintStart_toEndOf="@id/buttonC"
-        app:layout_constraintTop_toBottomOf="@id/button7"
         app:layout_constraintEnd_toStartOf="@id/button10"
-        android:onClick="digitClick"/>
+        app:layout_constraintStart_toEndOf="@id/buttonC"
+        app:layout_constraintTop_toTopOf="@id/buttonC" />
 
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button10"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:onClick="onDecimalPointClick"
         android:text="."
-        app:layout_constraintStart_toEndOf="@id/button0"
-        app:layout_constraintTop_toBottomOf="@id/button7"
+        android:layout_marginStart="2dp"
+        android:layout_marginLeft="2dp"
         app:layout_constraintEnd_toStartOf="@id/buttondiv"
-        android:onClick="onDecimalPointClick"/>
-    <Button
+        app:layout_constraintStart_toEndOf="@id/button0"
+        app:layout_constraintTop_toTopOf="@id/button0" />
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttondiv"
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
+        android:onClick="symbolClick"
         android:text="/"
-        app:layout_constraintTop_toBottomOf="@id/button7"
-        app:layout_constraintStart_toEndOf="@id/button10"
         app:layout_constraintEnd_toEndOf="@id/buttonmul"
-        android:onClick="symbolClick"/>
+        app:layout_constraintStart_toEndOf="@id/button10"
+        app:layout_constraintTop_toTopOf="@id/button10" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttoneql"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:text="="
-        app:layout_constraintTop_toBottomOf="@id/buttonC"
+        app:layout_constraintEnd_toEndOf="@id/buttondiv"
         app:layout_constraintStart_toStartOf="@id/buttonC"
         app:layout_constraintEnd_toEndOf="@id/buttondiv"
         android:onClick="equalClick"/>
