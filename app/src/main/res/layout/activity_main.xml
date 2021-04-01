@@ -237,11 +237,23 @@
         android:id="@+id/buttoneql"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="20dp"
+        android:onClick="equalClick"
         android:text="="
         app:layout_constraintEnd_toEndOf="@id/buttondiv"
         app:layout_constraintStart_toStartOf="@id/buttonC"
-        app:layout_constraintEnd_toEndOf="@id/buttondiv"
-        android:onClick="equalClick"/>
+        app:layout_constraintTop_toBottomOf="@id/buttonC" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="2dp"
+        android:text="Undo"
+        android:onClick="undoButtonClick"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/buttoneql"
+        app:layout_constraintStart_toStartOf="@id/buttoneql"
+        app:layout_constraintTop_toBottomOf="@id/buttoneql" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
