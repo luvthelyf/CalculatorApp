@@ -72,30 +72,28 @@ public class MainActivity extends AppCompatActivity {
         long number2 = Long.parseLong(editText.getText().toString());
         double result = 0;
         switch (lastOperation) {
-
             case R.id.buttonadd:
                 result = (double)number1 + number2;
-                textView.setText(textView.getText().toString() + number2 + " = " + result);
+                textView.setText(textView.getText().toString() + number2);
                 break;
-
             case R.id.buttonsub:
                 result = (double)number1 - number2;
-                textView.setText(textView.getText().toString() + number2 + " = " + result);
+                textView.setText(textView.getText().toString() + number2);
                 break;
             case R.id.buttonmul:
                 result = (double)number1 * number2;
-                textView.setText(textView.getText().toString() + number2 + " = " + result);
+                textView.setText(textView.getText().toString() + number2);
                 break;
             case R.id.buttondiv:
                 try {
                     result = (double)number1 / number2;
-                    textView.setText(textView.getText().toString() + number2 + " = " + result);
+                    textView.setText(textView.getText().toString() + number2);
                 } catch (ArithmeticException exception) {
                     textView.setText("Invalid expression!");
                 }
                 break;
         }
-        editText.setText("");
+        editText.setText(""+result);
     }
 
     public void onDecimalPointClick(View view) {
