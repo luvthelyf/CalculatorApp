@@ -11,3 +11,11 @@ P
  app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
 ‡
 Wapp/src/main/java/com/practice/calculator/presentation/ui/fragment/EditorViewModel.java,c/5/c50bcee5a5097326f29a01c8b37c3a6081f91103
+T
+$.idea/codeStyles/codeStyleConfig.xml,d/d/dd7b3350c29c49497756c7f32c69a3bed18b1cba
+L
+.idea/codeStyles/Project.xml,6/e/6ecd6000a7b6f4a2884412ff19f74193ed089648
+R
+"app/src/main/res/values/themes.xml,e/b/eb7f0f821bde169dd21862705b2b042d2cea69a3
+X
+(app/src/main/res/values-night/themes.xml,8/c/8c3a6b96d9ffba496992e612d58227c19e6b9e65

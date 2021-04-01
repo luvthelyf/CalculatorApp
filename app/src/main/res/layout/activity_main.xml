@@ -8,14 +8,24 @@
     android:background="@color/transparent_black"
     tools:context=".presentation.ui.activity.MainActivity">
 
+    <TextView
+        android:id="@+id/equation"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_margin="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
     <EditText
         android:id="@+id/edt1"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="250dp"
-        android:layout_margin="10dp"
         android:background="#55ffffff"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintTop_toBottomOf="@id/equation"
+        app:layout_constraintStart_toStartOf="@id/equation"
+        app:layout_constraintEnd_toEndOf="@id/equation"/>
 
 
     <Button
@@ -195,7 +205,7 @@
         app:layout_constraintStart_toEndOf="@id/button0"
         app:layout_constraintTop_toBottomOf="@id/button7"
         app:layout_constraintEnd_toStartOf="@id/buttondiv"
-        android:onClick="digitClick"/>
+        android:onClick="onDecimalPointClick"/>
     <Button
         android:id="@+id/buttondiv"
         style="?android:attr/buttonStyleSmall"
