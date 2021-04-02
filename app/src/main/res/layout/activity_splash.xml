@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_primary"
+    android:gravity="center"
     tools:context=".presentation.ui.activity.SplashActivity">
 
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/ic_launcher_background"
-        android:foregroundGravity="center_horizontal"/>
-
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_calculator"/>
 
 </RelativeLayout>
