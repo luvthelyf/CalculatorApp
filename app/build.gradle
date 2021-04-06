@@ -17,12 +17,22 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+        release {
+            storeFile file("signature.jks")
+            storePassword 'calculator@04062021'
+            keyAlias 'calculator@0406'
+            keyPassword 'calculator@04062021'
+        }
+    }
+
     buildTypes {
         debug{
             debuggable true
         }
         release {
             debuggable false
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
