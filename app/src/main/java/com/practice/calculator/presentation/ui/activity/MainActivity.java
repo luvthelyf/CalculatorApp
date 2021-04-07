@@ -2,6 +2,7 @@ package com.practice.calculator.presentation.ui.activity;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -11,14 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.practice.calculator.R;
 
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Stack;
 
 public class MainActivity extends AppCompatActivity {
 
     EditText editText;
-    List<String> historyOfInputsAndResult;
+    Stack<String> historyOfInputsAndResult;
     TextView textView;
     boolean lastNumeric = false;
     boolean lastDot = false;
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         editText = findViewById(R.id.edt1);
         textView = findViewById(R.id.equation);
         editText.setInputType(InputType.TYPE_NULL);
-        historyOfInputsAndResult = new LinkedList<>();
+        historyOfInputsAndResult = new Stack<>();
     }
 
     public void digitClick(View view) {
@@ -42,11 +41,16 @@ public class MainActivity extends AppCompatActivity {
             editText.setText(text);
         }
         lastNumeric = true;
+        historyOfInputsAndResult.push(editText.getText().toString());
+
     }
 
     public void symbolClick(View view) {
         lastDot = false;
-        editText.append(((Button) view).getText());
+        String text = ((Button) view).getText().toString();
+        editText.append(text);
+        historyOfInputsAndResult.push(editText.getText().toString());
+
     }
 
     public void clearClick(View view) {
@@ -58,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
             editText.append(".");
             lastNumeric = false;
             lastDot = true;
+            historyOfInputsAndResult.push(editText.getText().toString());
         }
     }
 
@@ -106,7 +111,6 @@ public class MainActivity extends AppCompatActivity {
         char[] tokens = expression.toCharArray();
 
         Stack<Double> values = new Stack<>();
-
         Stack<Character> ops = new Stack<>();
 
         for (int i = 0; i < tokens.length; i++) {
@@ -186,5 +190,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void undoButtonClick(View view) {
 
+        if (!historyOfInputsAndResult.isEmpty()) {
+            Log.e("sandeep", "stack popped for : " + historyOfInputsAndResult.pop());
+            if (historyOfInputsAndResult.isEmpty())
+                editText.setText("");
+            else
+                editText.setText(historyOfInputsAndResult.peek());
+        }
     }
 }
