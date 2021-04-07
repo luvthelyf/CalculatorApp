@@ -60,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
     public void onDecimalPointClick(View view) {
         if (lastNumeric && !lastDot) {
             editText.append(".");
-            lastNumeric = false;
             lastDot = true;
             historyOfInputsAndResult.push(editText.getText().toString());
         }
@@ -82,9 +81,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void equalClick(View view) {
-        lastNumeric = false;
+
         String currentInput = simplifyInput(editText.getText().toString());
         try {
+            lastNumeric = true;
             Double result = evaluateExpressionResult(currentInput);
             String resultToShow = String.valueOf(result);
             if (!isActualResultInDouble(resultToShow)) {
@@ -92,9 +92,11 @@ public class MainActivity extends AppCompatActivity {
             }
             editText.setText(resultToShow);
             textView.append(currentInput + "=" + resultToShow + "\n");
-        } catch (Exception e) {
-            editText.setText("Invalid operation!");
+        } catch (UnsupportedOperationException e) {
+            lastNumeric = false;
+            editText.setText(e.getMessage());
         }
+        historyOfInputsAndResult.push(editText.getText().toString());
     }
 
     private boolean isActualResultInDouble(String result) {
@@ -117,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
             if (tokens[i] == ' ')
                 continue;
 
-            if (tokens[i] >= '0' && tokens[i] <= '9') {
+            if (tokens[i] >= '0' && tokens[i] <= '9' || tokens[i] == '.') {
                 StringBuilder sbuf = new StringBuilder();
 
                 while (i < tokens.length &&
-                        tokens[i] >= '0' &&
-                        tokens[i] <= '9')
+                        (tokens[i] >= '0' &&
+                        tokens[i] <= '9' || tokens[i] == '.'))
                     sbuf.append(tokens[i++]);
                 values.push(Double.parseDouble(sbuf.toString()));
                 i--;
@@ -191,11 +193,16 @@ public class MainActivity extends AppCompatActivity {
     public void undoButtonClick(View view) {
 
         if (!historyOfInputsAndResult.isEmpty()) {
-            Log.e("sandeep", "stack popped for : " + historyOfInputsAndResult.pop());
+            Log.e("sandeep", "stack popped for : " + historyOfInputsAndResult.peek());
+            String poppedString = historyOfInputsAndResult.pop();
+            char lastChar = poppedString.charAt(poppedString.length() - 1);
+            if(lastChar == '.') lastDot = false;
+            else if (lastChar >= '0' && lastChar <= '9') lastNumeric = true;
             if (historyOfInputsAndResult.isEmpty())
                 editText.setText("");
-            else
+            else {
                 editText.setText(historyOfInputsAndResult.peek());
+            }
         }
     }
 }
